@@ -4,11 +4,23 @@
 
 <div class ="row">
     <div class="col-md-10 offset-md-3">
-        
+      <div class="col-lg-8">
             <h3>Makaleler</h3>
             <hr>
-            
+          </div>   
     </div>
+</div>
+
+<div class ="row">
+  <div class="col-md-10 offset-md-3">
+      <div class="col-lg-8">
+          <form>
+            {% csrf_token %}
+              <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Ara...">
+            <button type="submit" class="btn btn-danger">Ara</button>
+          </form>
+    </div>
+  </div>
 </div>
 
 {% if articles %}
@@ -45,8 +57,10 @@
       
       <!-- Post Content -->
       <p class="lead">
-          {{article.content|safe}}
+          {{article.content|safe|truncatewords:50}}
+
       </p>
+      <a style="float : right;" href="/articles/article/{{article.id}}" class="btn btn-danger">Devamını Oku</a>
       <hr>
 
     </div>
@@ -58,9 +72,15 @@
 
 
 {% else %}
-<div class = "alert alert-danger">
+<div class ="row">
+  <div class="col-md-10 offset-md-3">
+    <div class="col-lg-8">
+      <div class = "alert alert-danger">
     Makale Bulunamadı
- </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endif %}
 

@@ -2,7 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Article
+from .models import Article,Comment
+
+admin.site.register(Comment)
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
